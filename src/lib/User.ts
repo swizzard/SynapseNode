@@ -7,6 +7,7 @@ import { IUserObject } from "../interfaces/user";
 import { IgenECashBarcodePayload, IGetNodesApiResponse, INodeDetailsObject } from "../interfaces/node";
 import { IDisputeTransactionPayload, IGetTransactionsApiResponse, ITransactionDetailsObject } from "../interfaces/transaction";
 import { IGetShipmentsApiResponse, IGetSubnetsApiResponse, IShipmentObject, ISubnetDetailsObject } from "../interfaces/subnet";
+import { IGetStatementsApiResponse } from "../interfaces/statement";
 
 class User {
   id: string;
@@ -329,7 +330,7 @@ class User {
    */
   getStatementsByUser(
     queryParams: IQueryParams = {}
-  ): Promise<AxiosResponse<any>> {
+  ): Promise<AxiosResponse<IGetStatementsApiResponse>> {
     const { page, per_page } = queryParams;
     const { host, headers, id } = this;
     const originalUrl = `${host}/users/${id}/statements`;
@@ -354,7 +355,7 @@ class User {
   getStatementsByNode(
     node_id: string,
     queryParams: IQueryParams = {}
-  ): Promise<AxiosResponse<any>> {
+  ): Promise<AxiosResponse<IGetStatementsApiResponse>> {
     const { page, per_page } = queryParams;
     const { host, headers, id } = this;
     const originalUrl = `${host}/users/${id}/nodes/${node_id}/statements`;

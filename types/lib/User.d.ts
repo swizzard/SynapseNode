@@ -5,6 +5,7 @@ import { IUserObject } from "../interfaces/user";
 import { IgenECashBarcodePayload, IGetNodesApiResponse, INodeDetailsObject } from "../interfaces/node";
 import { IDisputeTransactionPayload, IGetTransactionsApiResponse, ITransactionDetailsObject } from "../interfaces/transaction";
 import { IGetShipmentsApiResponse, IGetSubnetsApiResponse, IShipmentObject, ISubnetDetailsObject } from "../interfaces/subnet";
+import { IGetStatementsApiResponse } from "../interfaces/statement";
 declare class User {
     id: string;
     body: IUserObject;
@@ -126,7 +127,7 @@ declare class User {
      * {@link [Statement Object Details](https://docs.synapsefi.com/api-references/statements/statement-object-details)}
      * {@link [View all user statements](https://docs.synapsefi.com/api-references/statements/view-all-user-statements)}
      */
-    getStatementsByUser(queryParams?: IQueryParams): Promise<AxiosResponse<any>>;
+    getStatementsByUser(queryParams?: IQueryParams): Promise<AxiosResponse<IGetStatementsApiResponse>>;
     /**
      * @description gets list of statement objects base on passed node id
      * @param queryParams
@@ -135,7 +136,7 @@ declare class User {
      * {@link [Statement Object Details](https://docs.synapsefi.com/api-references/statements/statement-object-details)}
      * {@link [View all node statements](https://docs.synapsefi.com/api-references/statements/view-all-node-statements)}
      */
-    getStatementsByNode(node_id: string, queryParams?: IQueryParams): Promise<AxiosResponse<any>>;
+    getStatementsByNode(node_id: string, queryParams?: IQueryParams): Promise<AxiosResponse<IGetStatementsApiResponse>>;
     /**
      * @deprecated use `shipCard` instead
      */
